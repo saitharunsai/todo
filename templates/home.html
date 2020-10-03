@@ -1,0 +1,76 @@
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+    <meta charset="UTF-8">
+    <title>Todo app</title>
+
+
+    <style>
+
+body {
+    animation: fadeOut 2s;
+    position: relative;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    background: rgb(255, 98, 70);
+    background: url("https://papers.co/wallpaper/papers.co-vk55-android-lollipop-material-design-pattern-36-3840x2400-4k-wallpaper.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 760px;
+}
+.label {
+    display: flex;
+    min-width: 950px;
+    min-height: 350px;
+    background: rgb(255, 255, 255);
+    border: 10pt;
+    border-radius: 8pt;
+    align-content: center;
+    justify-content: center;
+    
+
+}
+.bold{
+    font-size: 100px;
+
+    text-size-adjust: 100px;
+
+}
+ </style>
+
+
+</head>
+<body>
+         <div >
+            <h1> TODO APP.</h1>
+            <div>
+            <form class="input" action="/task" method="post">
+                <p ><input type="text" name="content"></p>
+                <button type="submit" class="btn btn-primary">Add task</button>
+            </form>
+            
+        </div>
+            <div class="label">
+            
+            <ol  >
+                {% for task in tasks %}
+                    <li>
+                        <P  style="font-weight: bolder;" > 
+                        {% if task.done %} <strike style="font-size: larger;"
+                        > {% endif %}{{ task.content }} {% if task.done %} </strike>{% endif %}
+                        </P>
+                        <a class="btn btn-success" href="/done/{{ task.id }}">Done</a>
+                        <a  class="btn btn-danger"  href="/delete/{{ task.id }}">Delete</a>
+                    </li>
+                {% endfor %}
+            </ol>
+        </div>
+        </div>
+        </body>
+   
+</html>
+
+
+
