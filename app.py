@@ -35,7 +35,7 @@ def tasks_list():
 def add_task():
     content = request.form['content']
     if not content:
-        return 'Error'
+        return redirect('/')
 
     task = Task(content)
     db.session.add(task)
